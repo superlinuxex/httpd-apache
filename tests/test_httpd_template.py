@@ -28,12 +28,12 @@ class TestHTTPDExTemplate:
             container="httpd-ex", dir="openshift/templates", filename="httpd.json"
         )
         assert self.oc_api.deploy_template(
-            template=template_json, name_in_template="httpd-example", expected_output="Welcome to your static httpd",
+            template=template_json, name_in_template="httpd-example", expected_output="Bienvenido Welcome to your static httpd",
             openshift_args=["SOURCE_REPOSITORY_REF=master", f"HTTPD_VERSION={VERSION}", "NAME=httpd-example"]
         )
         assert self.oc_api.template_deployed(name_in_template="httpd-example")
         assert self.oc_api.check_response_inside_cluster(
-            name_in_template="httpd-example", expected_output="Welcome to your static httpd"
+            name_in_template="httpd-example", expected_output="Bienvenido Welcome to your static httpd"
         )
 
     def test_httpd_ex_template_by_request(self):
@@ -41,10 +41,10 @@ class TestHTTPDExTemplate:
             container="httpd-ex", dir="openshift/templates", filename="httpd.json"
         )
         assert self.oc_api.deploy_template(
-            template=template_json, name_in_template="httpd-example", expected_output="Welcome to your static httpd",
+            template=template_json, name_in_template="httpd-example", expected_output="Bienvenido Welcome to your static httpd",
             openshift_args=["SOURCE_REPOSITORY_REF=master", f"HTTPD_VERSION={VERSION}", "NAME=httpd-example"]
         )
         assert self.oc_api.template_deployed(name_in_template="httpd-example")
         assert self.oc_api.check_response_outside_cluster(
-            name_in_template="httpd-example", expected_output="Welcome to your static httpd"
+            name_in_template="httpd-example", expected_output="Bienvenido Welcome to your static httpd"
         )
